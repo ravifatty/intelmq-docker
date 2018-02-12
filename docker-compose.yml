@@ -16,14 +16,15 @@ services:
       driver: syslog
     networks:
       - intelmq-network
+    links:
+      - redis
 
   redis:
     image: redis
     build: redis/
+    restart: "always"
     depends_on:
       - ubuntu
-    expose:
-     - 6379
     networks:
       - intelmq-network
 
