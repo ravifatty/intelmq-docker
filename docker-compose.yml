@@ -16,8 +16,6 @@ services:
       driver: syslog
     networks:
       - intelmq-network
-    links:
-      - redis
 
   redis:
     image: redis
@@ -27,6 +25,8 @@ services:
       - ubuntu
     networks:
       - intelmq-network
+    expose:
+      - 6379
 
   ubuntu:
     build: ubuntu/
